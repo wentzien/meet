@@ -2,7 +2,7 @@
   "name": "meet",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "client/script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/wentzien/meet/issues"
   },
-  "homepage": "https://github.com/wentzien/meet#readme"
+  "homepage": "https://github.com/wentzien/meet#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "socket.io": "^4.1.2",
+    "uuid": "^8.3.2"
+  }
 }
