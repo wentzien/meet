@@ -2,10 +2,18 @@ const express = require("express");
 const path = require("path");
 const socketio = require("socket.io");
 const http = require("http");
+const cors = require("cors");
+const {v4: uuidV4} = require("uuid");
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
-const {v4: uuidV4} = require("uuid");
+const io = socketio(server, {
+    cors: {
+        origin: "*"
+    }
+});
+
+app.use(cors());
+app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../client')));
 
