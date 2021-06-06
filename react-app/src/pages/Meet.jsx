@@ -7,7 +7,7 @@ import "../App.css";
 
 const roomId = window.location.pathname.split("/")[1];
 const peer = new Peer();
-const socket = io("http://localhost:3000");
+const socket = io("http://localhost:5000");
 const peers = {};
 
 const Meet = () => {
