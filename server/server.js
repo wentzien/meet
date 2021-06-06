@@ -1,41 +1,23 @@
+require("dotenv").config();
+const config = require("config");
+
 const express = require("express");
-const path = require("path");
-const socketio = require("socket.io");
 const http = require("http");
-const cors = require("cors");
-const {v4: uuidV4} = require("uuid");
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server, {
-    cors: {
-        origin: "*"
-    }
-});
 
-app.use(cors());
-app.use(express.json());
+const logger = require("./startup/logger");
+require("./startup/logging")();
+// require("./startup/db/mongoDb").connectToDb();
+// require("./startup/db/mySql").createPool();
+require("./startup/db/mongoose")();
+require("./startup/cors")(app);
+require("./startup/routes")(app);
+require("./sockets/socket")(server);
+require("./startup/config")();
+require("./startup/validation")();
 
-app.use(express.static(path.join(__dirname, '../client')));
-
-app.get("/start", (req, res) => {
-    res.redirect("/" + uuidV4())
-});
-
-app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../client', 'index.html'));
-});
-
-io.on("connection", socket => {
-    socket.on("join-room", (roomId, userId) => {
-        console.log("user joined room", userId);
-        socket.join(roomId);
-        socket.broadcast.to(roomId).emit("user-joined", userId);
-        socket.on("disconnect", () => {
-            console.log("user disconnected", userId);
-           socket.broadcast.to(roomId).emit("user-disconnected", userId);
-        });
-    });
-});
-
-const port = process.env.PORT || 3000;
-server.listen(port);
+const port = process.env.PORT || config.get("port");
+server.listen(port, () =>
+    logger.info(`Listening on port ${port}...`)
+);
