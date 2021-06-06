@@ -13,6 +13,7 @@ require("./startup/logging")();
 require("./startup/db/mongoose")();
 require("./startup/cors")(app);
 require("./startup/routes")(app);
+require("./startup/reactApp")(app);
 require("./sockets/socket")(server);
 require("./startup/config")();
 require("./startup/validation")();
