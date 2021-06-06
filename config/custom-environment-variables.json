@@ -1,0 +1,18 @@
+{
+  "jwtPrivateKey": "express_jwtPrivateKey",
+  "db": {
+    "mongoDb": {
+      "name": "mongoDb_name",
+      "url": "mongoDb_url",
+      "options": "mongoDb_options"
+    },
+    "mySql": {
+      "host": "mySql_host",
+      "port": "mySql_port",
+      "connectionLimit": "mySql_connectionLimit",
+      "database": "mySql_database",
+      "user": "mySql_user",
+      "password": "mySql_password"
+    }
+  }
+}

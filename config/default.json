@@ -1,0 +1,20 @@
+{
+  "jwtPrivateKey": "",
+  "port": "5000",
+  "requiresAuth": true,
+  "db": {
+    "mongoDb": {
+      "name": "",
+      "url": "",
+      "options": ""
+    },
+    "mySql": {
+      "host": "",
+      "port": 3306,
+      "connectionLimit": 10,
+      "database": "",
+      "user": "",
+      "password": ""
+    }
+  }
+}
