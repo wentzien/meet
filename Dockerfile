@@ -1,13 +1,21 @@
 FROM node:12
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 ENV PORT 80
 
-COPY package.json ./
+COPY ./react-app/package.json ./
+
+RUN npm install
+
+COPY ./express-server/package.json ./
 
 RUN npm install
 
 COPY . .
 
-CMD  ["node", "server/server.js"]
+RUN cd ./react-app/
+RUN npm run build
+RUN cd ..
+
+CMD  ["node", "express-server/server.js"]
