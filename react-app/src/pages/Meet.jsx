@@ -3,7 +3,7 @@ import React, {useEffect, useRef} from "react";
 import io from "socket.io-client";
 import Peer from "peerjs";
 
-import "../App.css";
+import "../styles/App.css";
 
 const roomId = window.location.pathname.split("/")[1];
 const peer = new Peer();
