@@ -1,7 +1,7 @@
 .idea
 node_modules
 
-.env
+express-server/.env
 
 logs/combined.log
 logs/error.log
