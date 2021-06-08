@@ -12,6 +12,7 @@ WORKDIR /app/express-server/
 COPY ./express-server/package.json ./
 RUN npm install
 
+WORKDIR /app/
 COPY . .
 
 WORKDIR /app/react-app/
