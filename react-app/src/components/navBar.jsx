@@ -1,58 +1,38 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
-const NavBar = ({ user }) => {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
-        Vidly
-      </Link>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon" />
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav">
-          <NavLink className="nav-item nav-link" to="/movies">
-            Movies
-          </NavLink>
-          <NavLink className="nav-item nav-link" to="/customers">
-            Customers
-          </NavLink>
-          <NavLink className="nav-item nav-link" to="/rentals">
-            Rentals
-          </NavLink>
-          {!user && (
-            <React.Fragment>
-              <NavLink className="nav-item nav-link" to="/login">
-                Login
-              </NavLink>
-              <NavLink className="nav-item nav-link" to="/register">
-                Register
-              </NavLink>
-            </React.Fragment>
-          )}
-          {user && (
-            <React.Fragment>
-              <NavLink className="nav-item nav-link" to="/profile">
-                {user.name}
-              </NavLink>
-              <NavLink className="nav-item nav-link" to="/logout">
-                Logout
-              </NavLink>
-            </React.Fragment>
-          )}
-        </div>
-      </div>
-    </nav>
-  );
+
+const NavBar = ({user}) => {
+    return (
+        <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+            <Container>
+                <Navbar.Brand as={Link} to="/">Navbar</Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link as={NavLink} to="/meet/hallo">Meet</Nav.Link>
+                        <Nav.Link as={NavLink} to="#Meetings">Meetings</Nav.Link>
+                        <Nav.Link as={NavLink} to="#Chats">Chats</Nav.Link>
+                    </Nav>
+                    <Nav>
+                        {!user && (
+                            <React.Fragment>
+                                <Nav.Link as={NavLink} to="/login">Login</Nav.Link>
+                                <Nav.Link as={NavLink} to="/register">Register</Nav.Link>
+                            </React.Fragment>
+                        )}
+                        {user && (
+                            <Nav.Link as={NavLink} to="/logout">Logout</Nav.Link>
+                        )}
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
 };
 
 export default NavBar;
