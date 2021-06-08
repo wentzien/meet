@@ -4,18 +4,19 @@ WORKDIR /app
 
 ENV PORT 80
 
+WORKDIR /app/react-app/
 COPY ./react-app/package.json ./
-
 RUN npm install
 
+WORKDIR /app/express-server/
 COPY ./express-server/package.json ./
-
 RUN npm install
 
 COPY . .
 
-RUN cd ./react-app/
+WORKDIR /app/react-app/
 RUN npm run build
-RUN cd ..
 
-CMD  ["node", "express-server/server.js"]
+WORKDIR /app/express-server/
+
+CMD  ["node", "server.js"]
