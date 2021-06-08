@@ -2,10 +2,10 @@ import React, {useState, useEffect} from "react";
 import {Route, Switch, Redirect} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import NavBar from "./components/navBar";
-import LoginForm from "./pages/LoginForm";
+import NavBar from "./components/NavBar";
+import Login from "./pages/Login";
 import Logout from "./pages/Logout";
-import RegisterForm from "./pages/RegisterForm";
+import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import Meet from "./pages/Meet";
@@ -30,9 +30,9 @@ function App() {
           <NavBar user={user}/>
           <main className="container">
               <Switch>
-                  <Route path={"/login"} component={LoginForm}/>
+                  <Route path={"/login"} component={Login}/>
                   <Route path={"/logout"} component={Logout}/>
-                  <Route path={"/register"} component={RegisterForm}/>
+                  <Route path={"/register"} component={Register}/>
                   <Route path={"/404"} component={NotFound}/>
                   <Route exact path={"/"} component={Home}/>
                   <Route exact path={"/meet/*"} component={Meet}/>
