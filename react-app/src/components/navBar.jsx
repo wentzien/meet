@@ -15,8 +15,8 @@ const NavBar = ({user}) => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link as={NavLink} to="/meet/hallo">Meet</Nav.Link>
-                        <Nav.Link as={NavLink} to="#Meetings">Meetings</Nav.Link>
-                        <Nav.Link as={NavLink} to="#Chats">Chats</Nav.Link>
+                        <Nav.Link as={NavLink} to="/meetings">Meetings</Nav.Link>
+                        <Nav.Link as={NavLink} to="/chats">Chats</Nav.Link>
                     </Nav>
                     <Nav>
                         {!user && (
@@ -26,7 +26,12 @@ const NavBar = ({user}) => {
                             </React.Fragment>
                         )}
                         {user && (
-                            <Nav.Link as={NavLink} to="/logout">Logout</Nav.Link>
+                            <NavDropdown title="User" id="collasible-nav-dropdown">
+                                <NavDropdown.Item as={Link} to="#profile">Profile</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="#settings">Settings</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item as={Link} to="/logout">Logout</NavDropdown.Item>
+                            </NavDropdown>
                         )}
                     </Nav>
                 </Navbar.Collapse>
